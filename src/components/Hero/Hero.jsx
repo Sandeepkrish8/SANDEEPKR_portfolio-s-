@@ -17,66 +17,61 @@ export default function Hero() {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Master timeline
-      const tl = gsap.timeline({ defaults: { ease: 'power4.out' } });
+      const mobile = window.matchMedia('(max-width: 768px)').matches;
+
+      const tl = gsap.timeline({ defaults: { ease: 'power2.out' } });
 
       tl.fromTo(tagRef.current,
-        { opacity: 0, y: 20 },
-        { opacity: 1, y: 0, duration: 0.7 }
+        { opacity: 0, y: 16 },
+        { opacity: 1, y: 0, duration: 0.5 }
       )
       .fromTo(nameRef.current.querySelectorAll('.char'),
-        { opacity: 0, y: 80, rotateX: -90 },
-        { opacity: 1, y: 0, rotateX: 0, duration: 0.8, stagger: 0.04 },
-        '-=0.3'
+        { opacity: 0, y: mobile ? 20 : 40 },
+        { opacity: 1, y: 0, duration: 0.6, stagger: mobile ? 0.02 : 0.03 },
+        '-=0.2'
       )
       .fromTo(titleRef.current,
-        { opacity: 0, x: -40 },
-        { opacity: 1, x: 0, duration: 0.8 },
-        '-=0.4'
-      )
-      .fromTo(descRef.current,
-        { opacity: 0, y: 30 },
-        { opacity: 1, y: 0, duration: 0.8 },
-        '-=0.4'
-      )
-      .fromTo(ctaRef.current.children,
-        { opacity: 0, y: 20, scale: 0.9 },
-        { opacity: 1, y: 0, scale: 1, duration: 0.6, stagger: 0.12 },
+        { opacity: 0, x: -24 },
+        { opacity: 1, x: 0, duration: 0.5 },
         '-=0.3'
       )
+      .fromTo(descRef.current,
+        { opacity: 0, y: 20 },
+        { opacity: 1, y: 0, duration: 0.5 },
+        '-=0.3'
+      )
+      .fromTo(ctaRef.current.children,
+        { opacity: 0, y: 16 },
+        { opacity: 1, y: 0, duration: 0.5, stagger: 0.1 },
+        '-=0.25'
+      )
       .fromTo(socialRef.current.children,
-        { opacity: 0, x: -20 },
-        { opacity: 1, x: 0, duration: 0.5, stagger: 0.08 },
+        { opacity: 0, x: -14 },
+        { opacity: 1, x: 0, duration: 0.4, stagger: 0.07 },
         '-=0.2'
       )
       .fromTo(avatarRef.current,
-        { opacity: 0, scale: 0.7, rotation: -10 },
-        { opacity: 1, scale: 1, rotation: 0, duration: 1, ease: 'elastic.out(1, 0.6)' },
-        '<-0.5'
+        { opacity: 0, scale: 0.85 },
+        { opacity: 1, scale: 1, duration: 0.7, ease: 'power2.out' },
+        '<-0.4'
       )
       .fromTo(scrollHintRef.current,
         { opacity: 0 },
-        { opacity: 1, duration: 0.6 },
-        '-=0.2'
+        { opacity: 1, duration: 0.4 },
+        '-=0.1'
       );
 
-      // Floating animation on avatar
-      gsap.to(avatarRef.current, {
-        y: -14,
-        duration: 2.8,
-        ease: 'sine.inOut',
-        yoyo: true,
-        repeat: -1,
-        delay: 1.5,
-      });
-
-      // Animated blobs
-      gsap.to('.hero-blob-1', {
-        x: 30, y: 20, duration: 6, ease: 'sine.inOut', yoyo: true, repeat: -1,
-      });
-      gsap.to('.hero-blob-2', {
-        x: -20, y: 30, duration: 8, ease: 'sine.inOut', yoyo: true, repeat: -1,
-      });
+      // Subtle float on avatar (desktop only)
+      if (!mobile) {
+        gsap.to(avatarRef.current, {
+          y: -8,
+          duration: 2.5,
+          ease: 'sine.inOut',
+          yoyo: true,
+          repeat: -1,
+          delay: 1,
+        });
+      }
     }, sectionRef);
 
     return () => ctx.revert();

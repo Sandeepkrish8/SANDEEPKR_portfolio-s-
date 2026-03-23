@@ -11,12 +11,8 @@ export const personal = {
   github: "https://github.com/Sandeepkrish8",
   resume: "/Sandeep_Krishnan_RESUME.pdf",
   heroTagline: "MCA Graduate · AI Enthusiast · Building interactive, accessible web experiences.",
-  about: `I'm a passionate MCA graduate specializing in front-end development with React.js.
-I build responsive, accessible, and interactive web apps with clean code and modern UI.
-I'm always learning and enjoy solving real-world problems through technology.`,
-  goal: `My goal is to join a forward-thinking tech team where I can contribute to
-meaningful products, grow my skills in modern frontend and full-stack ecosystems, and
-eventually lead UI/UX engineering efforts while exploring AI-driven web experiences.`,
+  about: `MCA graduate with hands-on experience building production-ready React applications. I specialize in crafting fast, accessible, and visually polished UIs — turning complex requirements into clean, maintainable code. Currently working at VCodez while actively seeking a frontend engineering role.`,
+  goal: `I want to join a product team where I can own UI challenges end-to-end — from design system decisions to performance tuning — and grow alongside engineers who care about craft and code quality.`,
 };
 
 export const education = [
@@ -84,6 +80,12 @@ export const projects = [
     title: "Hair Growth Nutrition App",
     description:
       "React app that suggests personalised food and vitamins for hair care with ML-based image analysis. Users upload a photo and get AI-powered diet recommendations.",
+    problem: "Most people don't know which nutrients affect hair health. This app bridges that gap with personalised, data-driven diet plans.",
+    features: [
+      "Photo upload with ML-based hair condition analysis",
+      "Personalised food & vitamin recommendations",
+      "Responsive, mobile-first UI with smooth UX",
+    ],
     tech: ["React", "JavaScript", "CSS3", "ML Integration", "REST API"],
     github: "https://github.com/Sandeepkrish8/hair-growth-app",
     live: "https://hair-growth-app.vercel.app",
@@ -94,6 +96,12 @@ export const projects = [
     title: "Earthquake Tracker",
     description:
       "A web app that tracks real-time earthquake data worldwide using the USGS Earthquake API, displaying magnitude, location, and depth on an interactive map.",
+    problem: "Real-time earthquake data is scattered across technical dashboards. This app surfaces it in a clean, accessible UI anyone can use.",
+    features: [
+      "Live USGS API integration with auto-refresh",
+      "Filter by magnitude, region, and time range",
+      "Interactive map with depth & intensity display",
+    ],
     tech: ["React", "JavaScript", "USGS API", "CSS3"],
     github: "https://github.com/Sandeepkrish8/Earthquake_Tracker",
     live: "https://earthquake-tracker-ruddy.vercel.app",
@@ -104,6 +112,12 @@ export const projects = [
     title: "Solar System Explorer",
     description:
       "An interactive web app to explore the solar system with 3D-style models and detailed planetary information. Built to make astronomy fun and educational.",
+    problem: "Astronomy content online is either too dense or too boring. This makes planetary exploration visually engaging and interactive.",
+    features: [
+      "3D-style CSS animations for each planet",
+      "Detailed stats panel per planet on click",
+      "Smooth transitions with no external animation library",
+    ],
     tech: ["React", "JavaScript", "CSS3", "Animations"],
     github: "https://github.com/Sandeepkrish8/Solar_Expo",
     live: "https://solar-expo-sage.vercel.app",
@@ -114,6 +128,12 @@ export const projects = [
     title: "Weather App",
     description:
       "A clean weather forecasting app built with React and the OpenWeatherMap API. Provides current conditions and forecasts with a responsive UI.",
+    problem: "Basic weather apps are cluttered and hard to read at a glance. This one surfaces what matters most in a clean, minimal layout.",
+    features: [
+      "Search any city worldwide with instant results",
+      "5-day forecast with temperature & condition icons",
+      "Dynamic background change based on weather state",
+    ],
     tech: ["React", "JavaScript", "OpenWeatherMap API", "CSS3"],
     github: "https://github.com/Sandeepkrish8/Weather-App",
     live: "https://weather-app-delta-sand.vercel.app",
@@ -124,6 +144,12 @@ export const projects = [
     title: "Todo List App",
     description:
       "A simple, clean Todo List app built with React, allowing users to add, edit, complete, and delete tasks with a smooth and accessible interface.",
+    problem: "Productivity apps often get in your way. This one keeps every interaction fast and frictionless with zero setup required.",
+    features: [
+      "Add, edit, complete, and delete tasks instantly",
+      "Persistent state across sessions via localStorage",
+      "Accessible keyboard navigation and focus management",
+    ],
     tech: ["React", "JavaScript", "CSS3"],
     github: "https://github.com/Sandeepkrish8/TO-DO-LIST",
     live: "https://to-do-list-nine-phi-84.vercel.app",
@@ -134,6 +160,12 @@ export const projects = [
     title: "Drizzle",
     description:
       "A fun, small-scale interactive web page where clicking the Drizzle button triggers a beautiful rain animation with animated water droplets.",
+    problem: "A focused CSS animation experiment — proving that delightful micro-interactions don't need heavy libraries.",
+    features: [
+      "Pure CSS keyframe rain animation with 60fps performance",
+      "Click-triggered animation with smooth start/stop",
+      "Zero dependencies — vanilla HTML, CSS, JS only",
+    ],
     tech: ["HTML5", "CSS3", "JavaScript"],
     github: "https://github.com/Sandeepkrish8/drizzles",
     live: "https://drizzles-indol.vercel.app",

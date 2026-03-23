@@ -89,25 +89,27 @@ export default function Projects() {
 
 function ProjectCard({ project, index }) {
   const cardRef = useRef(null);
+  const isMobile = () => window.matchMedia('(max-width: 768px)').matches;
 
   const tiltHandler = e => {
+    if (isMobile()) return;
     const card = cardRef.current;
     if (!card) return;
     const rect = card.getBoundingClientRect();
     const x = e.clientX - rect.left - rect.width / 2;
     const y = e.clientY - rect.top - rect.height / 2;
     gsap.to(card, {
-      rotateY: x / 20,
-      rotateX: -y / 20,
+      rotateY: x / 25,
+      rotateX: -y / 25,
       duration: 0.4,
       ease: 'power2.out',
-      transformPerspective: 800,
+      transformPerspective: 900,
     });
   };
 
   const resetTilt = () => {
     gsap.to(cardRef.current, {
-      rotateY: 0, rotateX: 0, duration: 0.6, ease: 'elastic.out(1, 0.5)',
+      rotateY: 0, rotateX: 0, duration: 0.5, ease: 'power2.out',
     });
   };
 
@@ -154,7 +156,21 @@ function ProjectCard({ project, index }) {
       {/* Body */}
       <div className={styles.cardBody}>
         <h3 className={styles.title}>{project.title}</h3>
-        <p className={styles.desc}>{project.description}</p>
+
+        {project.problem && (
+          <p className={styles.problem}>{project.problem}</p>
+        )}
+
+        {project.features && (
+          <ul className={styles.features}>
+            {project.features.map((f, i) => (
+              <li key={i} className={styles.featureItem}>
+                <span className={styles.featureDot} />
+                {f}
+              </li>
+            ))}
+          </ul>
+        )}
 
         <div className={styles.tech}>
           {project.tech.map(t => (

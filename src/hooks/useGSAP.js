@@ -4,6 +4,8 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger);
 
+const isMobile = () => window.matchMedia('(max-width: 768px)').matches;
+
 /**
  * Reveals an element when it enters the viewport.
  * Returns a ref to attach to the target element.
@@ -15,19 +17,20 @@ export function useReveal(options = {}) {
     const el = ref.current;
     if (!el) return;
 
+    const mobile = isMobile();
     const ctx = gsap.context(() => {
       gsap.fromTo(
         el,
-        { opacity: 0, y: options.y ?? 50 },
+        { opacity: 0, y: mobile ? 20 : (options.y ?? 30) },
         {
           opacity: 1,
           y: 0,
-          duration: options.duration ?? 0.9,
-          ease: options.ease ?? 'power3.out',
+          duration: mobile ? 0.4 : (options.duration ?? 0.6),
+          ease: options.ease ?? 'power2.out',
           delay: options.delay ?? 0,
           scrollTrigger: {
             trigger: el,
-            start: options.start ?? 'top 85%',
+            start: options.start ?? 'top 88%',
             toggleActions: 'play none none none',
           },
         }
@@ -51,19 +54,20 @@ export function useStaggerReveal(selector = '.stagger-item', options = {}) {
     const el = ref.current;
     if (!el) return;
 
+    const mobile = isMobile();
     const ctx = gsap.context(() => {
       gsap.fromTo(
         el.querySelectorAll(selector),
-        { opacity: 0, y: options.y ?? 40 },
+        { opacity: 0, y: mobile ? 15 : (options.y ?? 25) },
         {
           opacity: 1,
           y: 0,
-          duration: options.duration ?? 0.7,
-          ease: options.ease ?? 'power3.out',
-          stagger: options.stagger ?? 0.1,
+          duration: mobile ? 0.4 : (options.duration ?? 0.6),
+          ease: options.ease ?? 'power2.out',
+          stagger: mobile ? 0.06 : (options.stagger ?? 0.1),
           scrollTrigger: {
             trigger: el,
-            start: options.start ?? 'top 82%',
+            start: options.start ?? 'top 85%',
             toggleActions: 'play none none none',
           },
         }

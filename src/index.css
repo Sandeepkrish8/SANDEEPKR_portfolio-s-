@@ -31,7 +31,7 @@
   --font-mono: 'Fira Code', 'Cascadia Code', 'Consolas', monospace;
 
   /* Spacing */
-  --section-padding: 100px 0;
+  --section-padding: 80px 0;
   --container-max: 1180px;
   --radius: 16px;
   --radius-sm: 10px;
@@ -243,13 +243,22 @@ section {
   .grid-3 { grid-template-columns: repeat(2, 1fr); }
 }
 @media (max-width: 768px) {
-  :root { --section-padding: 70px 0; }
+  :root { --section-padding: 64px 0; }
   .grid-2, .grid-3 { grid-template-columns: 1fr; }
-  .section-title { font-size: 1.9rem; }
+  .section-title { font-size: 1.75rem; }
+  .section-subtitle { font-size: 0.95rem; }
   .container { padding: 0 1.25rem; }
 }
 @media (max-width: 480px) {
-  :root { --section-padding: 55px 0; }
-  .btn { padding: 0.7rem 1.4rem; font-size: 0.875rem; }
+  :root { --section-padding: 48px 0; }
+  .btn { padding: 0.75rem 1.5rem; font-size: 0.875rem; min-height: 44px; }
+}
+
+/* Respect reduced-motion preference — instant show, no transitions */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
 }
 
