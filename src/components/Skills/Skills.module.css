@@ -1,0 +1,121 @@
+.skills {
+  background: var(--bg-secondary);
+  overflow: hidden;
+  position: relative;
+}
+
+.blob {
+  width: 500px;
+  height: 500px;
+  background: var(--accent-2);
+  bottom: -150px;
+  left: -120px;
+}
+
+.header { margin-bottom: 2.5rem; }
+
+/* ── Filter tabs ───────────────────────────── */
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-bottom: 2.5rem;
+}
+
+.filterBtn {
+  padding: 0.45rem 1.1rem;
+  border-radius: 50px;
+  border: 1.5px solid var(--border);
+  background: var(--bg-card);
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.filterBtn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.filterActive {
+  background: var(--gradient);
+  border-color: transparent;
+  color: #fff !important;
+  box-shadow: 0 4px 16px var(--accent-glow);
+}
+
+/* ── Grid ──────────────────────────────────── */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(155px, 1fr));
+  gap: 1.25rem;
+}
+
+/* ── Skill card ────────────────────────────── */
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 1.5rem 1rem;
+  text-align: center;
+  cursor: default;
+  background: var(--bg-card);
+}
+
+.iconWrap {
+  font-size: 2.6rem;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  border-radius: 14px;
+  background: var(--bg-secondary);
+  transition: var(--transition);
+}
+
+.card:hover .iconWrap {
+  background: rgba(108, 99, 255, 0.1);
+}
+
+.skillName {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+/* ── Progress bar ──────────────────────────── */
+.bar {
+  width: 100%;
+  height: 4px;
+  background: var(--border);
+  border-radius: 99px;
+  overflow: hidden;
+}
+
+.barFill {
+  height: 100%;
+  width: var(--skill-level, 0%);
+  background: var(--gradient);
+  border-radius: 99px;
+  animation: growBar 1.2s ease-out forwards;
+}
+
+@keyframes growBar {
+  from { width: 0; }
+  to { width: var(--skill-level, 0%); }
+}
+
+.level {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--accent);
+}
+
+@media (max-width: 600px) {
+  .grid { grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); }
+}

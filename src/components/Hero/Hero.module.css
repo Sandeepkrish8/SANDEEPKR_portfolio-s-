@@ -1,0 +1,292 @@
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 120px 0 60px;
+  overflow: hidden;
+  position: relative;
+}
+
+/* ── Background elements ──────────────────── */
+.blob1 {
+  width: 600px;
+  height: 600px;
+  background: var(--accent);
+  top: -100px;
+  right: -100px;
+}
+
+.blob2 {
+  width: 450px;
+  height: 450px;
+  background: var(--accent-2);
+  bottom: -80px;
+  left: -80px;
+}
+
+.grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(var(--border) 1px, transparent 1px),
+    linear-gradient(90deg, var(--border) 1px, transparent 1px);
+  background-size: 50px 50px;
+  mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 100%);
+  -webkit-mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 100%);
+  opacity: 0.4;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── Inner layout ────────────────────────── */
+.inner {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  align-items: center;
+  gap: 4rem;
+  position: relative;
+  z-index: 1;
+}
+
+/* ── Tag greeting ─────────────────────────── */
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(108, 99, 255, 0.08);
+  border: 1px solid rgba(108, 99, 255, 0.2);
+  border-radius: 50px;
+  padding: 0.4rem 1rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--accent);
+  margin-bottom: 1.25rem;
+  width: fit-content;
+}
+
+.tagDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent-3);
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(1.3); }
+}
+
+/* ── Name ─────────────────────────────────── */
+.name {
+  font-size: clamp(2.8rem, 6vw, 5rem);
+  font-weight: 900;
+  letter-spacing: -0.035em;
+  color: var(--text-primary);
+  margin-bottom: 0.75rem;
+  line-height: 1.05;
+  display: flex;
+  flex-wrap: wrap;
+  perspective: 1000px;
+}
+
+.name .char {
+  display: inline-block;
+  transform-origin: bottom;
+}
+
+.space {
+  display: inline-block;
+  width: 0.28em;
+}
+
+/* ── Title ────────────────────────────────── */
+.title {
+  font-size: clamp(1.2rem, 2.5vw, 1.7rem);
+  font-weight: 600;
+  margin-bottom: 1.25rem;
+}
+
+.titlePrefix {
+  color: var(--text-secondary);
+}
+
+.titleRole {
+  position: relative;
+}
+
+/* ── Description ──────────────────────────── */
+.desc {
+  color: var(--text-secondary);
+  font-size: 1.08rem;
+  line-height: 1.75;
+  max-width: 500px;
+  margin-bottom: 2rem;
+}
+
+/* ── CTA Buttons ──────────────────────────── */
+.cta {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 2.25rem;
+}
+
+/* ── Social ───────────────────────────────── */
+.social {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.socialLink {
+  width: 42px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  background: var(--bg-card);
+  transition: var(--transition);
+  cursor: pointer;
+}
+
+.socialLink:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  transform: translateY(-3px);
+  box-shadow: 0 5px 20px var(--accent-glow);
+}
+
+.socialDivider {
+  width: 28px;
+  height: 1px;
+  background: var(--border);
+}
+
+.socialText {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+/* ── Avatar ───────────────────────────────── */
+.avatar {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 420px;
+}
+
+.avatarRing {
+  width: 280px;
+  height: 280px;
+  border-radius: 50%;
+  background: var(--gradient);
+  padding: 4px;
+  box-shadow: 0 0 60px var(--accent-glow), 0 0 120px rgba(108, 99, 255, 0.12);
+}
+
+.avatarInner {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: var(--bg-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.avatarEmoji {
+  font-size: 7rem;
+  line-height: 1;
+}
+
+/* Orbit badges */
+.badge {
+  position: absolute;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 50px;
+  padding: 0.4rem 0.9rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  box-shadow: var(--shadow-sm);
+  white-space: nowrap;
+  animation: orbit 0.5s ease-out forwards;
+}
+
+.badge1 { top: 20px; left: 0px; animation-delay: 1.2s; opacity: 0; }
+.badge2 { top: 20px; right: 0px; animation-delay: 1.35s; opacity: 0; }
+.badge3 { bottom: 80px; left: 10px; animation-delay: 1.5s; opacity: 0; }
+.badge4 { bottom: 80px; right: 0px; animation-delay: 1.65s; opacity: 0; }
+
+@keyframes orbit {
+  from { opacity: 0; transform: scale(0.6); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* ── Scroll Hint ──────────────────────────── */
+.scrollHint {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+  color: var(--text-muted);
+  font-size: 0.78rem;
+  font-weight: 500;
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: bounce 2.5s ease-in-out infinite;
+  cursor: default;
+  user-select: none;
+}
+
+.scrollIcon {
+  font-size: 1.1rem;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(8px); }
+}
+
+/* ── Responsive ───────────────────────────── */
+@media (max-width: 900px) {
+  .inner {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 2.5rem;
+  }
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .tag { align-self: center; }
+  .desc { text-align: center; }
+  .cta { justify-content: center; }
+  .social { justify-content: center; }
+
+  .avatar { height: 320px; order: -1; }
+  .avatarRing { width: 220px; height: 220px; }
+  .avatarEmoji { font-size: 5.5rem; }
+}
+
+@media (max-width: 600px) {
+  .hero { padding: 100px 0 80px; }
+  .name { font-size: 2.4rem; }
+  .badge { display: none; }
+  .scrollHint { display: none; }
+}

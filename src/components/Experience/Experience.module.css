@@ -1,0 +1,226 @@
+.experience {
+  background: var(--bg-primary);
+}
+
+.header { margin-bottom: 3.5rem; }
+
+/* ── Timeline ──────────────────────────────── */
+.timeline {
+  display: flex;
+  flex-direction: column;
+  max-width: 860px;
+}
+
+.item {
+  display: grid;
+  grid-template-columns: 56px 1fr;
+  gap: 0 1.75rem;
+  align-items: start;
+}
+
+.track {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 1.8rem;
+}
+
+.dot {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--gradient);
+  border: 3px solid var(--bg-primary);
+  box-shadow: 0 0 0 3px var(--accent-2);
+  flex-shrink: 0;
+}
+
+.line {
+  width: 2px;
+  flex: 1;
+  min-height: 3rem;
+  background: linear-gradient(to bottom, var(--accent-2), transparent);
+  margin-top: 6px;
+}
+
+/* ── Card ──────────────────────────────────── */
+.card {
+  margin-bottom: 2.5rem;
+  background: var(--bg-card);
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.cardTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.typeBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--accent-2);
+  background: rgba(255, 101, 132, 0.1);
+  border: 1px solid rgba(255, 101, 132, 0.2);
+  border-radius: 50px;
+  padding: 0.2rem 0.7rem;
+  margin-bottom: 0.5rem;
+  width: fit-content;
+}
+
+.role {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.2rem;
+}
+
+.company {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--accent);
+}
+
+.meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  align-items: flex-end;
+  flex-shrink: 0;
+}
+
+.meta span {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.83rem;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+/* ── Contributions ─────────────────────────── */
+.contributions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+
+.contribution {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+.dot2 {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+  flex-shrink: 0;
+  margin-top: 0.45rem;
+}
+
+.tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+@media (max-width: 680px) {
+  .item { grid-template-columns: 1fr; }
+  .track { display: none; }
+  .meta { align-items: flex-start; }
+}
+
+/* ── Research Publications ─────────────────── */
+.pubSection {
+  margin-top: 4rem;
+  padding-top: 3rem;
+  border-top: 1px solid var(--border);
+}
+
+.pubHeading {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 1.75rem;
+}
+
+.pubGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+  gap: 1.5rem;
+}
+
+.pubCard {
+  background: var(--bg-card);
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.pubCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: var(--gradient);
+  border-radius: 4px 0 0 4px;
+}
+
+.pubYear {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--accent);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.pubTitle {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.4;
+}
+
+.pubJournal {
+  font-size: 0.83rem;
+  font-weight: 600;
+  color: var(--accent-2);
+  font-style: italic;
+}
+
+.pubDesc {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  line-height: 1.65;
+  flex: 1;
+}
+
+.pubBtn {
+  align-self: flex-start;
+  font-size: 0.82rem;
+  padding: 0.5rem 1.1rem;
+  margin-top: 0.25rem;
+}
+
+@media (max-width: 540px) {
+  .pubGrid { grid-template-columns: 1fr; }
+}
