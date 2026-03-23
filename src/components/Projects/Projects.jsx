@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { FiGithub, FiExternalLink, FiStar } from 'react-icons/fi';
+import { FiGithub, FiExternalLink, FiStar, FiImage } from 'react-icons/fi';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { projects } from '../../data/portfolioData';
@@ -8,13 +8,18 @@ import styles from './Projects.module.css';
 
 gsap.registerPlugin(ScrollTrigger);
 
-// Gradient palettes for project cards
+// Screenshot thumbnail via free service (no API key required)
+const thumbUrl = (liveUrl) =>
+  `https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSGGheXS9hppnBP4vBK7YWzlYlKtI3rTwyk_A&s${liveUrl}`;
+
+// Gradient palettes for fallback
 const GRADIENTS = [
   'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
   'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)',
   'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)',
   'linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)',
   'linear-gradient(135deg, #fa709a 0%, #fee140 100%)',
+  'linear-gradient(135deg, #a18cd1 0%, #fbc2eb 100%)',
 ];
 
 export default function Projects() {
@@ -121,9 +126,10 @@ function ProjectCard({ project, index }) {
       onMouseLeave={resetTilt}
       style={{ '--grad': GRADIENTS[index % GRADIENTS.length] }}
     >
-      {/* Gradient header bar */}
+      {/* Screenshot preview header */}
       <div className={styles.cardHeader}>
-        <div className={styles.cardGradient} />
+        <PreviewImage liveUrl={project.live} title={project.title} />
+        <div className={styles.cardOverlay} />
         {project.featured && (
           <span className={styles.featuredBadge}>
             <FiStar /> Featured
@@ -179,5 +185,35 @@ function ProjectCard({ project, index }) {
         </div>
       </div>
     </article>
+  );
+}
+
+// Screenshot image with gradient fallback
+function PreviewImage({ liveUrl, title }) {
+  const [status, setStatus] = useState('loading'); // 'loading' | 'loaded' | 'error'
+
+  return (
+    <div className={`${styles.previewWrap} ${styles[status]}`}>
+      {/* Gradient fallback — always rendered behind the image */}
+      <div className={styles.cardGradient} />
+
+      {status !== 'error' && (
+        <img
+          src={thumbUrl(liveUrl)}
+          alt={`${title} preview`}
+          className={styles.previewImg}
+          loading="lazy"
+          onLoad={() => setStatus('loaded')}
+          onError={() => setStatus('error')}
+        />
+      )}
+
+      {status === 'error' && (
+        <div className={styles.previewPlaceholder}>
+          <FiImage />
+          <span>{title}</span>
+        </div>
+      )}
+    </div>
   );
 }

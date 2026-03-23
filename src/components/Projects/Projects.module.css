@@ -47,21 +47,87 @@
 /* Gradient top bar */
 .cardHeader {
   position: relative;
-  height: 90px;
+  height: 200px;
   flex-shrink: 0;
   overflow: hidden;
+  background: var(--bg-secondary);
 }
 
 .cardGradient {
   position: absolute;
   inset: 0;
   background: var(--grad);
-  opacity: 0.85;
+  opacity: 0.9;
   transition: opacity 0.3s;
+  z-index: 0;
 }
 
-.card:hover .cardGradient {
+/* Preview image wrapper */
+.previewWrap {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+.previewImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+  display: block;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+/* Once loaded, fade in the screenshot */
+.loaded .previewImg {
   opacity: 1;
+}
+
+/* While loading or on error, show gradient behind */
+.loading .previewImg,
+.error .previewImg {
+  opacity: 0;
+}
+
+/* Hover: subtle zoom on the screenshot */
+.card:hover .previewImg {
+  transform: scale(1.04);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+/* Placeholder when screenshot fails */
+.previewPlaceholder {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  color: rgba(255,255,255,0.7);
+  font-size: 0.8rem;
+  font-weight: 600;
+  z-index: 2;
+}
+
+.previewPlaceholder svg {
+  font-size: 1.6rem;
+  opacity: 0.8;
+}
+
+/* Dark overlay on top of image so badges/links stay readable */
+.cardOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0,0,0,0.18) 0%,
+    rgba(0,0,0,0.04) 50%,
+    rgba(0,0,0,0.22) 100%
+  );
+  z-index: 2;
+  pointer-events: none;
 }
 
 .featuredBadge {
@@ -80,6 +146,7 @@
   font-weight: 700;
   padding: 0.25rem 0.65rem;
   border-radius: 50px;
+  z-index: 3;
 }
 
 .cardLinks {
@@ -88,6 +155,7 @@
   right: 12px;
   display: flex;
   gap: 0.5rem;
+  z-index: 3;
 }
 
 .link {

@@ -57,7 +57,14 @@ export const projects = [
   {
     title: "Inventory Management System",
     description:
-      "A web-based inventory management system built with React and Node.js, allowing users to track stock levels, manage products, and generate reports with a user-friendly interface.",
+      "A web-based inventory management system built with React and Node.js, allowing users to track stock levels, manage products, and generate reports with a user-friendly interface. Designed for small businesses to streamline their inventory processes and improve efficiency.",
+      problem: "Small businesses often struggle with manual inventory tracking, leading to errors and inefficiencies. This system provides an accessible solution to manage stock effectively.",
+      features: [
+        "Real-time stock level tracking with dynamic updates",
+        "Product management with add, edit, and delete functionality",
+        "Automated report generation for sales and inventory",
+      ],
+
     tech: ["React", "Figma", "TypeScript", "CSS3"],
     github: "https://github.com/Sandeepkrish8/Inventory_Management",
     live: "https://inventory-management-hazel-xi.vercel.app/",
@@ -69,6 +76,12 @@ export const projects = [
     title: "Ai Mock Interviewer",
     description:
       "A React-based AI Mock Interviewer that simulates technical interviews with real-time feedback, helping users practice coding questions and improve their interview skills.",
+    problem: "Many developers struggle to find realistic interview practice. This tool provides an interactive, AI-driven mock interview experience to boost confidence and performance.",
+    features: [
+      "AI-generated coding questions with varying difficulty levels",
+      "Real-time feedback on code quality, efficiency, and correctness",
+      "User-friendly interface with a focus on accessibility and performance",
+    ],
     tech: ["React", "JavaScript", "CSS3", "AI Integration"],
     github: "https://github.com/Sandeepkrish8/Ai-mock",
     live: "https://ai-mock-sooty.vercel.app/",
