@@ -77,17 +77,32 @@
   display: block;
   opacity: 0;
   transition: opacity 0.5s ease;
+  position: relative;
+  z-index: 2;
 }
 
-/* Once loaded, fade in the screenshot */
-.loaded .previewImg {
+.imgLoaded {
   opacity: 1;
 }
 
-/* While loading or on error, show gradient behind */
-.loading .previewImg,
-.error .previewImg {
-  opacity: 0;
+/* Shimmer skeleton */
+.skeleton {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(
+    90deg,
+    var(--bg-secondary) 25%,
+    var(--bg-card) 50%,
+    var(--bg-secondary) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.6s infinite linear;
+}
+
+@keyframes shimmer {
+  0%   { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
 }
 
 /* Hover: subtle zoom on the screenshot */

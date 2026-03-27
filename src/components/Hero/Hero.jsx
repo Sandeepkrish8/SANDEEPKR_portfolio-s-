@@ -1,7 +1,7 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { FiArrowDown, FiGithub, FiLinkedin, FiDownload, FiEye } from 'react-icons/fi';
-import { personal } from '../../data/portfolioData';
+import { personal, quotes } from '../../data/portfolioData';
 import styles from './Hero.module.css';
 
 export default function Hero() {
@@ -14,6 +14,9 @@ export default function Hero() {
   const socialRef = useRef(null);
   const avatarRef = useRef(null);
   const scrollHintRef = useRef(null);
+  const quoteRef = useRef(null);
+
+  const [quote] = useState(() => quotes[Math.floor(Math.random() * quotes.length)]);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -59,6 +62,11 @@ export default function Hero() {
         { opacity: 0 },
         { opacity: 1, duration: 0.4 },
         '-=0.1'
+      )
+      .fromTo(quoteRef.current,
+        { opacity: 0, y: 12 },
+        { opacity: 1, y: 0, duration: 0.6 },
+        '-=0.2'
       );
 
       // Subtle float on avatar (desktop only)
@@ -151,6 +159,11 @@ export default function Hero() {
             <div className={styles.socialDivider} />
             <span className={styles.socialText}>Follow along</span>
           </div>
+
+          <blockquote ref={quoteRef} className={styles.quote}>
+            <span className={styles.quoteText}>"{quote.text}"</span>
+            <cite className={styles.quoteAuthor}>— {quote.author}</cite>
+          </blockquote>
         </div>
 
         {/* ── Right: Avatar / Graphic ── */}

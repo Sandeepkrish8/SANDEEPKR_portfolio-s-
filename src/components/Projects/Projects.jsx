@@ -8,9 +8,9 @@ import styles from './Projects.module.css';
 
 gsap.registerPlugin(ScrollTrigger);
 
-// Screenshot thumbnail via free service (no API key required)
+// Auto-screenshot via microlink (free, no API key, reliable CDN)
 const thumbUrl = (liveUrl) =>
-  `https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSGGheXS9hppnBP4vBK7YWzlYlKtI3rTwyk_A&s${liveUrl}`;
+  `https://api.microlink.io/?url=${encodeURIComponent(liveUrl)}&screenshot=true&meta=false&embed=screenshot.url`;
 
 // Gradient palettes for fallback
 const GRADIENTS = [
@@ -128,7 +128,7 @@ function ProjectCard({ project, index }) {
     >
       {/* Screenshot preview header */}
       <div className={styles.cardHeader}>
-        <PreviewImage liveUrl={project.live} title={project.title} />
+        <PreviewImage liveUrl={project.live} localPath={project.screenshot} title={project.title} />
         <div className={styles.cardOverlay} />
         {project.featured && (
           <span className={styles.featuredBadge}>
@@ -188,27 +188,48 @@ function ProjectCard({ project, index }) {
   );
 }
 
-// Screenshot image with gradient fallback
-function PreviewImage({ liveUrl, title }) {
-  const [status, setStatus] = useState('loading'); // 'loading' | 'loaded' | 'error'
+// Screenshot image with skeleton → local file → microlink fallback → gradient
+function PreviewImage({ liveUrl, localPath, title }) {
+  // Stage: 'skeleton' → 'local' → 'remote' → 'error'
+  const [stage, setStage] = useState('local');
+  const [src, setSrc] = useState(localPath || thumbUrl(liveUrl));
+
+  const handleError = () => {
+    if (stage === 'local') {
+      // local file missing → try microlink auto-screenshot
+      setStage('remote');
+      setSrc(thumbUrl(liveUrl));
+    } else {
+      setStage('error');
+    }
+  };
 
   return (
-    <div className={`${styles.previewWrap} ${styles[status]}`}>
-      {/* Gradient fallback — always rendered behind the image */}
+    <div className={styles.previewWrap}>
+      {/* Gradient always behind as ultimate fallback */}
       <div className={styles.cardGradient} />
 
-      {status !== 'error' && (
-        <img
-          src={thumbUrl(liveUrl)}
-          alt={`${title} preview`}
-          className={styles.previewImg}
-          loading="lazy"
-          onLoad={() => setStatus('loaded')}
-          onError={() => setStatus('error')}
-        />
+      {stage !== 'error' && (
+        <>
+          {/* Shimmer skeleton shown until image loads */}
+          <div className={styles.skeleton} aria-hidden="true" />
+          <img
+            key={src}
+            src={src}
+            alt={`${title} preview`}
+            className={styles.previewImg}
+            loading="lazy"
+            onLoad={e => {
+              e.currentTarget.classList.add(styles.imgLoaded);
+              const skel = e.currentTarget.previousElementSibling;
+              if (skel) skel.style.display = 'none';
+            }}
+            onError={handleError}
+          />
+        </>
       )}
 
-      {status === 'error' && (
+      {stage === 'error' && (
         <div className={styles.previewPlaceholder}>
           <FiImage />
           <span>{title}</span>

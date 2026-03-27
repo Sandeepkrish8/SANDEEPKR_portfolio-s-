@@ -64,11 +64,10 @@ export const projects = [
         "Product management with add, edit, and delete functionality",
         "Automated report generation for sales and inventory",
       ],
-
     tech: ["React", "Figma", "TypeScript", "CSS3"],
     github: "https://github.com/Sandeepkrish8/Inventory_Management",
     live: "https://inventory-management-hazel-xi.vercel.app/",
-    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTcy_5VAwf2NPxGBhmaFrTjrNtJM1ZznR_W9w&s",
+    screenshot: "/screenshots/inventory.png",
     featured: true,
   },
 
@@ -85,7 +84,7 @@ export const projects = [
     tech: ["React", "JavaScript", "CSS3", "AI Integration"],
     github: "https://github.com/Sandeepkrish8/Ai-mock",
     live: "https://ai-mock-sooty.vercel.app/",
-    image: "project7",
+    screenshot: "/screenshots/ai-mock.png",
     featured: true,
   },
 
@@ -102,7 +101,7 @@ export const projects = [
     tech: ["React", "JavaScript", "CSS3", "ML Integration", "REST API"],
     github: "https://github.com/Sandeepkrish8/hair-growth-app",
     live: "https://hair-growth-app.vercel.app",
-    image: "project1",
+    screenshot: "/screenshots/hair-growth.png",
     featured: true,
   },
   {
@@ -118,7 +117,7 @@ export const projects = [
     tech: ["React", "JavaScript", "USGS API", "CSS3"],
     github: "https://github.com/Sandeepkrish8/Earthquake_Tracker",
     live: "https://earthquake-tracker-ruddy.vercel.app",
-    image: "project2",
+    screenshot: "/screenshots/earthquake.png",
     featured: true,
   },
   {
@@ -134,7 +133,7 @@ export const projects = [
     tech: ["React", "JavaScript", "CSS3", "Animations"],
     github: "https://github.com/Sandeepkrish8/Solar_Expo",
     live: "https://solar-expo-sage.vercel.app",
-    image: "project3",
+    screenshot: "/screenshots/solar.png",
     featured: false,
   },
   {
@@ -150,7 +149,7 @@ export const projects = [
     tech: ["React", "JavaScript", "OpenWeatherMap API", "CSS3"],
     github: "https://github.com/Sandeepkrish8/Weather-App",
     live: "https://weather-app-delta-sand.vercel.app",
-    image: "project4",
+    screenshot: "/screenshots/weather.png",
     featured: false,
   },
   {
@@ -166,7 +165,7 @@ export const projects = [
     tech: ["React", "JavaScript", "CSS3"],
     github: "https://github.com/Sandeepkrish8/TO-DO-LIST",
     live: "https://to-do-list-nine-phi-84.vercel.app",
-    image: "project5",
+    screenshot: "/screenshots/todo.png",
     featured: false,
   },
   {
@@ -182,7 +181,7 @@ export const projects = [
     tech: ["HTML5", "CSS3", "JavaScript"],
     github: "https://github.com/Sandeepkrish8/drizzles",
     live: "https://drizzles-indol.vercel.app",
-    image: "project6",
+    screenshot: "/screenshots/drizzle.png",
     featured: false,
   },
 ];
@@ -255,4 +254,22 @@ export const socialLinks = [
   { name: "GitHub", url: "https://github.com/Sandeepkrish8", icon: "github" },
   { name: "LinkedIn", url: "https://linkedin.com/in/sandeep-krishnan", icon: "linkedin" },
   { name: "LeetCode", url: "https://leetcode.com/sandeepkrishnan", icon: "leetcode" },
+];
+
+export const quotes = [
+  { text: "The best way to predict the future is to invent it.", author: "Alan Kay" },
+  { text: "Code is like humor. When you have to explain it, it's bad.", author: "Cory House" },
+  { text: "First, solve the problem. Then, write the code.", author: "John Johnson" },
+  { text: "Any fool can write code that a computer can understand. Good programmers write code that humans can understand.", author: "Martin Fowler" },
+  { text: "Experience is the name everyone gives to their mistakes.", author: "Oscar Wilde" },
+  { text: "In order to be irreplaceable, one must always be different.", author: "Coco Chanel" },
+  { text: "Java is to JavaScript what Car is to Carpet.", author: "Chris Heilmann" },
+  { text: "The most disastrous thing that you can ever learn is your first programming language.", author: "Alan Kay" },
+  { text: "Simplicity is the soul of efficiency.", author: "Austin Freeman" },
+  { text: "Before software can be reusable it first has to be usable.", author: "Ralph Johnson" },
+  { text: "The function of good software is to make the complex appear to be simple.", author: "Grady Booch" },
+  { text: "It's not a bug — it's an undocumented feature.", author: "Anonymous" },
+  { text: "Make it work, make it right, make it fast.", author: "Kent Beck" },
+  { text: "Programs must be written for people to read, and only incidentally for machines to execute.", author: "Harold Abelson" },
+  { text: "The only way to go fast is to go well.", author: "Robert C. Martin" },
 ];
